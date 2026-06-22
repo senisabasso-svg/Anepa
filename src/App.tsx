@@ -12,6 +12,9 @@ const INSTAGRAM = "https://www.instagram.com/anepauy/";
 const REEL_PRESENTACION = "https://www.instagram.com/reels/DAB0FZYPVdn/";
 const WHATSAPP_CONSULTAS = "https://wa.me/59898679208";
 const BLOG_HISTORICO = "https://asociacionanepa.blogspot.com/";
+const LOGO = "/anepa-logo.png";
+const GESTION_LOGO_VIDEO = "/gestion-cosmetica-logo.mp4";
+const GESTION_LOGO_POSTER = "/gestion-cosmetica-logo.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 36 },
@@ -47,23 +50,13 @@ function Nav() {
       transition={{ duration: 0.5, delay: 0.1 }}
     >
       <a href="#inicio" className="nav-brand">
-        <span className="nav-mark" aria-hidden>
-          <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
-            <rect width="64" height="64" rx="14" fill="#0f172a" />
-            <path
-              d="M18 44V20l14 18 14-18v24"
-              stroke="#c9a227"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <circle cx="32" cy="16" r="3.5" fill="#c9a227" />
-          </svg>
-        </span>
-        <span className="nav-titles">
-          <span className="nav-name">ANEPA</span>
-          <span className="nav-sub tracking-wide">Uruguay</span>
-        </span>
+        <img
+          src={LOGO}
+          alt="ANEPA — Asociación Nacional de Estilistas, Peluqueros y Afines"
+          className="nav-logo"
+          width={160}
+          height={48}
+        />
       </a>
       <nav className="nav-links" aria-label="Principal">
         <a href="#mision">Misión</a>
@@ -148,10 +141,18 @@ export default function App() {
           className="hero-inner"
           style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
         >
+          <img
+            src={LOGO}
+            alt=""
+            aria-hidden
+            className="hero-logo"
+            width={420}
+            height={126}
+          />
           <p className="hero-eyebrow tracking-wide">Asociación civil · Uruguay</p>
           <h1 className="hero-title font-display">
-            Asociación Nacional de{" "}
-            <span className="hero-title-gold">Peluqueros, Estilistas y Afines</span>
+            Comunidad profesional de la{" "}
+            <span className="hero-title-gold">belleza en Uruguay</span>
           </h1>
           <p className="hero-lead">
             Unimos a peluqueros, barberos, maquilladores, especialistas en uñas y demás
@@ -335,14 +336,35 @@ export default function App() {
         </motion.div>
       </SectionShell>
 
-      <footer className="site-footer">
-        <p className="footer-acronym font-display">ANEPA</p>
-        <p className="footer-full tracking-wide">
-          Asociación Nacional de Peluqueros, Estilistas y Afines
+      <section className="partners-bar" aria-label="Alianzas">
+        <div className="partners-bar-inner">
+          <div className="partners-slot">
+            <img
+              src={LOGO}
+              alt="ANEPA — Asociación Nacional de Estilistas, Peluqueros y Afines"
+              className="partners-logo partners-logo-anepa"
+              width={320}
+              height={96}
+            />
+          </div>
+          <div className="partners-slot">
+            <video
+              className="partners-logo partners-logo-gestion"
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster={GESTION_LOGO_POSTER}
+              aria-label="Gestión Cosmética"
+            >
+              <source src={GESTION_LOGO_VIDEO} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        <p className="partners-copy">
+          © {new Date().getFullYear()} ANEPA · Uruguay · Comunidad profesional de la belleza
         </p>
-        <p className="footer-meta">Uruguay · Comunidad profesional de la belleza</p>
-        <p className="footer-copy">© {new Date().getFullYear()} ANEPA</p>
-      </footer>
+      </section>
 
       <style>{`
         .ambient {
@@ -405,27 +427,67 @@ export default function App() {
         .nav-brand {
           display: flex;
           align-items: center;
-          gap: 0.65rem;
         }
-        .nav-mark svg {
-          display: block;
+        .nav-logo {
+          height: clamp(2rem, 5vw, 2.65rem);
+          width: auto;
+          border-radius: 6px;
+        }
+        .hero-logo {
+          width: min(92vw, 26rem);
+          height: auto;
+          margin: 0 auto 1.5rem;
           border-radius: 10px;
         }
-        .nav-titles {
+        .partners-bar {
+          position: relative;
+          z-index: 1;
+          scroll-snap-align: end;
+          background: #ffffff;
+          padding: clamp(2.5rem, 6vh, 4rem) clamp(1.25rem, 4vw, 2.5rem);
+          border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        .partners-bar-inner {
+          max-width: 56rem;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+          align-items: center;
+          justify-items: center;
+        }
+        @media (min-width: 720px) {
+          .partners-bar-inner {
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+          }
+        }
+        .partners-slot {
           display: flex;
-          flex-direction: column;
-          line-height: 1.1;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          max-width: 22rem;
         }
-        .nav-name {
-          font-weight: 700;
-          font-size: 1.15rem;
-          letter-spacing: 0.06em;
+        .partners-logo {
+          width: 100%;
+          height: auto;
+          max-height: clamp(5.5rem, 14vw, 8.5rem);
+          object-fit: contain;
         }
-        .nav-sub {
-          font-size: 0.55rem;
-          font-weight: 600;
-          color: var(--muted);
-          margin-top: 0.15rem;
+        .partners-logo-anepa {
+          border-radius: 8px;
+        }
+        .partners-logo-gestion {
+          display: block;
+          background: transparent;
+        }
+        .partners-copy {
+          margin: clamp(2rem, 4vh, 2.75rem) 0 0;
+          text-align: center;
+          font-size: 0.72rem;
+          color: #64748b;
+          letter-spacing: 0.04em;
         }
         .nav-links {
           display: flex;
@@ -807,42 +869,6 @@ export default function App() {
             flex-wrap: wrap;
             justify-content: center;
           }
-        }
-        .site-footer {
-          position: relative;
-          z-index: 1;
-          scroll-snap-align: end;
-          padding: 2.5rem 1.25rem 3.25rem;
-          text-align: center;
-          border-top: 1px solid var(--line);
-          background: #080e18;
-        }
-        .footer-acronym {
-          font-size: clamp(2rem, 5vw, 2.5rem);
-          font-weight: 700;
-          margin: 0;
-          color: var(--gold-soft);
-        }
-        .footer-full {
-          font-size: 0.55rem;
-          font-weight: 600;
-          color: var(--muted);
-          margin: 0.5rem 0 0.25rem;
-          max-width: 22rem;
-          margin-left: auto;
-          margin-right: auto;
-          line-height: 1.5;
-        }
-        .footer-meta {
-          margin: 0 0 0.75rem;
-          font-size: 0.78rem;
-          color: var(--muted);
-        }
-        .footer-copy {
-          margin: 0;
-          font-size: 0.68rem;
-          color: var(--muted);
-          opacity: 0.85;
         }
       `}</style>
     </>
