@@ -1,6 +1,8 @@
 :root {
-  --bg: #0b1220;
-  --bg-elevated: #111b2e;
+  --bg: #000000;
+  --bg-elevated: #111111;
+  --bg-soft: #1a1a1a;
+  --partners-bg: #ffffff;
   --fg: #f1f5f9;
   --muted: #94a3b8;
   --line: rgba(148, 163, 184, 0.15);
