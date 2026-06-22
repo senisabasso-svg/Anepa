@@ -8,9 +8,9 @@ import {
 import { useRef, type ReactNode } from "react";
 
 /** Redes y material de difusión */
-const INSTAGRAM = "https://www.instagram.com/anep_uruguay/";
+const INSTAGRAM = "https://www.instagram.com/anepauy/";
 const REEL_PRESENTACION = "https://www.instagram.com/reels/DAB0FZYPVdn/";
-const WHATSAPP_CONSULTAS = "https://wa.me/59897385931";
+const WHATSAPP_CONSULTAS = "https://wa.me/59898679208";
 const BLOG_HISTORICO = "https://asociacionanepa.blogspot.com/";
 
 const fadeUp = {
@@ -171,7 +171,7 @@ export default function App() {
           <p className="hero-note">
             Contenido alineado a la misión pública de ANEPA. Seguinos en{" "}
             <a href={INSTAGRAM} className="link-inline" target="_blank" rel="noreferrer">
-              @anep_uruguay
+              @anepauy
             </a>
             .
           </p>
@@ -323,10 +323,10 @@ export default function App() {
           </p>
           <div className="contact-actions">
             <a className="btn btn-gold btn-lg" href={WHATSAPP_CONSULTAS} target="_blank" rel="noreferrer">
-              WhatsApp +598 97 385 931
+              WhatsApp +598 98 679 208
             </a>
             <a className="btn btn-outline btn-lg" href={INSTAGRAM} target="_blank" rel="noreferrer">
-              @anep_uruguay
+              @anepauy
             </a>
             <a className="btn btn-ghost btn-lg" href={REEL_PRESENTACION} target="_blank" rel="noreferrer">
               Ver reel de presentación
